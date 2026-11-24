@@ -286,6 +286,12 @@ svg text{font-family:var(--sans)}
 @media(max-width:760px){.snapc{grid-template-columns:1fr}}
 .snl{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
 .snl li{padding-left:18px;position:relative;font-size:15px}.snl li::before{content:"";position:absolute;left:3px;top:10px;width:7px;height:7px;border-radius:2px;background:var(--pri)}
+.bld{background:var(--navy);border-radius:12px;padding:14px;margin-bottom:14px}
+.fl2{display:grid;grid-template-columns:34px repeat(8,1fr);gap:5px;margin-bottom:5px;align-items:center}
+.fl2 span{font:600 12px var(--mono);color:#7fd1c7}
+.fl2 i{height:22px;border-radius:4px;background:#2a3d58;animation:lit .4s forwards}
+@keyframes lit{to{background:#0f766e}}
+.bcap{font-size:13px;color:#dfe6ef;margin-top:6px;text-align:center}
 .copied{color:var(--ok);font-size:14px;font-weight:600;align-self:center}
 </style>
 </head>
@@ -1064,12 +1070,13 @@ var R={
   var J=[['2004','IT Help Desk','Where it started',['First-line hardware and software support','Desktop setup, printers and peripherals','Logging and closing tickets'],['Windows','Hardware','Printers','Ticketing'],'A PC will not boot after a power cut.','The basics done right, and patience with users.'],
    ['2006–2016','Enterprise Network Support','Ten years with a major US carrier',['Enterprise and SMB network services','VPN, IPSec, MPLS and WAN/LAN troubleshooting','Go-to person for escalations'],['VPN','IPSec','MPLS','WAN/LAN','Routing'],'A branch loses its link over the carrier network during business hours.','Deep network fundamentals and calm under pressure.'],
    ['2020–2021','Web Hosting Support','International customers',['Hosting, DNS, email and server support','Customers across many time zones','Clear written answers'],['DNS','Email','Linux hosting','cPanel-style panels'],'A website goes down right after a DNS change.','How the internet side really works, and writing fixes people can follow.'],
-   ['2022–2023','IT Administrator','Dubai',['Systems and network administration','User support and onboarding','Asset tracking'],['Windows Server','Networking','M365','Assets'],'A new joiner needs an account, a laptop and access by tomorrow.','Owning systems end to end, not just tickets.'],
+   ['2022–2023','IT Administrator','Dubai · 3-person IT team · 3,000+ staff',['Set up IT from the ground up across 4 floors and 32 offices','Network, systems and user support for 3,000+ employees','One of a 3-person IT team'],['Windows Server','Networking','Structured cabling','M365','Assets'],'A new floor of 8 offices needs network, Wi-Fi and desks ready before move-in day.','Building at scale from an empty floor, with a very small team.'],
    ['2023–now','IT Operations Executive','Sole in-house IT · 250+ users · 7 offices',['Every IT layer, alone','Headquarters build and relocation with zero downtime','Remote support across several countries'],['Fortinet','UniFi','VoIP / SIP','CCTV','AD / GPO'],'Calls to one country start failing right after a platform release.','Everything above, combined into one role.']];
   var cur=4;
   el.innerHTML='<div class="snapbar" id="sb">'+J.map(function(j,i){return '<button class="sbn'+(i===cur?' on':'')+'" data-i="'+i+'"><b>'+j[0]+'</b><span>'+j[1]+'</span></button>'}).join('')+'</div><div id="sv"></div>';
   function draw(){var j=J[cur];el.querySelectorAll('.sbn').forEach(function(b,i){b.classList.toggle('on',i===cur)});
-   $('#sv',el).innerHTML='<div class="snapc"><div><div class="lbl" style="font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc)">'+j[0]+'</div><h4 style="font-size:19px;margin:4px 0 2px">'+j[1]+'</h4><div class="mut" style="font-size:14.5px;margin-bottom:10px">'+j[2]+'</div><ul class="snl">'+j[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="tagl">'+j[4].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</div></div><div class="cfx"><div><span class="cl c2">Example ticket</span>'+j[5]+'</div><div><span class="cl c3">What it gave me</span>'+j[6]+'</div></div></div>'}
+   var bld=cur===3?'<div class="bld">'+[4,3,2,1].map(function(f){return '<div class="fl2"><span>F'+f+'</span>'+[1,2,3,4,5,6,7,8].map(function(o){return '<i style="animation-delay:'+((4-f)*8+o)*0.04+'s"></i>'}).join('')+'</div>'}).join('')+'<div class="bcap">4 floors × 8 offices · 3,000+ users · built from the ground up</div></div>':'';
+   $('#sv',el).innerHTML=bld+'<div class="snapc"><div><div class="lbl" style="font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc)">'+j[0]+'</div><h4 style="font-size:19px;margin:4px 0 2px">'+j[1]+'</h4><div class="mut" style="font-size:14.5px;margin-bottom:10px">'+j[2]+'</div><ul class="snl">'+j[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="tagl">'+j[4].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</div></div><div class="cfx"><div><span class="cl c2">Example ticket</span>'+j[5]+'</div><div><span class="cl c3">What it gave me</span>'+j[6]+'</div></div></div>'}
   $('#sb',el).onclick=function(e){var b=e.target.closest('.sbn');if(b){cur=+b.dataset.i;draw()}};draw()},
  remote:function(el){
   var S=[['United Kingdom','Europe/London',-0.1,51.5],['Germany','Europe/Berlin',13.4,52.5],['Italy','Europe/Rome',9.2,45.5],['Hungary','Europe/Budapest',19.0,47.5],['Israel','Asia/Jerusalem',34.8,32.1],['Hong Kong','Asia/Hong_Kong',114.2,22.3],['Taiwan','Asia/Taipei',121.5,25.0]];
