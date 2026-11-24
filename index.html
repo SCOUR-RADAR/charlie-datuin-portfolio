@@ -255,6 +255,22 @@ svg text{font-family:var(--sans)}
 .fl.lnk{color:#1a5fb4;text-decoration:underline}
 .fl.hit{background:#fbe5e2;outline:2px solid var(--bad);color:var(--bad)}
 .sc2{margin:12px 0 8px;font-weight:700;color:var(--pri)}
+.mph{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.mph .tab small{display:block;font-weight:500;font-size:11.5px;opacity:.8}
+.mg{display:grid;grid-template-columns:1fr 70px 1.4fr;gap:10px;align-items:stretch}
+@media(max-width:700px){.mg{grid-template-columns:1fr}.mg .arw{display:none}}
+.site{border-radius:12px;padding:12px;background:var(--soft);display:flex;flex-direction:column;gap:6px}
+.site h5{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:2px;display:flex;justify-content:space-between}
+.ly{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:9px;background:#fff;border:1px solid var(--line);font-size:14px;text-align:left;width:100%;transition:.25s}
+.ly i{width:10px;height:10px;border-radius:50%;flex:none;background:#c3ccd6}
+.ly span{margin-left:auto;font-size:12px;color:var(--mut)}
+.ly.live i{background:var(--ok)}.ly.build i{background:var(--acc);animation:bl 1s infinite}.ly.off{opacity:.45}.ly.off i{background:#c3ccd6}
+.ly.build{border-color:#ecd0a0}.ly.live{border-color:#bfe3cf}.ly.sel{outline:2px solid var(--pri)}
+.arw{display:flex;align-items:center;justify-content:center}
+.arw svg{width:60px;height:120px}
+.mgd{margin-top:14px}
+.mgb{margin-top:12px;padding:14px;border-radius:10px;background:var(--navy);color:#dfe6ef;font-size:15px;display:none}
+.mgb b{color:#7fd1c7}
 .copied{color:var(--ok);font-size:14px;font-weight:600;align-self:center}
 </style>
 </head>
@@ -262,7 +278,7 @@ svg text{font-family:var(--sans)}
 
 <nav><div class="wrap">
   <div class="nm">Charlie <span>Datuin</span></div>
-  <ul><li><a href="#role">Current role</a></li><li><a href="#why">Why me</a></li><li><a href="#fit">Role fit</a></li><li><a href="#work">Work samples</a></li><li><a href="#exp">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
+  <ul><li><a href="#role">Current role</a></li><li><a href="#why">Why me</a></li><li><a href="#migration">HQ move</a></li><li><a href="#fit">Role fit</a></li><li><a href="#work">Work samples</a></li><li><a href="#exp">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -298,6 +314,11 @@ svg text{font-family:var(--sans)}
 <section id="why" class="alt"><div class="wrap">
   <div class="sh"><div class="kick">Why me</div><h2>What I bring that most applicants don't</h2></div>
   <div class="adv" id="adv"><div class="a"><h4>Big moves without downtime</h4><p>I led the headquarters build and relocation: network, Wi-Fi, firewalls, voice, servers and CCTV. 250+ users were live on day one with zero downtime.</p></div><div class="a"><h4>A full IT department in one person</h4><p>Network, voice, CCTV, endpoints, platform support and vendors all at once. You get one person who sees how it all connects.</p></div><div class="a"><h4>I see problems before users report them</h4><p>I review each platform release ahead of time, list what could break and prepare the fix and the user message in advance.</p></div><div class="a"><h4>Escalations developers actually act on</h4><p>I send error codes, logs, timestamps and what I've already ruled out. Tickets don't bounce back.</p></div><div class="a"><h4>Deep network roots</h4><p>Ten years supporting enterprise network services for a major US carrier (VPN, IPSec, MPLS, WAN/LAN) as the go-to person for escalations.</p></div><div class="a"><h4>I build my own tools</h4><p>Troubleshooting guides, checklists, a multi-site test lab and an offline knowledge assistant. They make me faster and more consistent.</p></div><div class="a"><h4>Everything gets written down</h4><p>I set up the support process from scratch: 27 SOPs and a 9-step triage flow. Every resolved case ends with a root cause and a short guide for users.</p></div></div>
+</div></section>
+
+<section id="migration" class="alt"><div class="wrap">
+  <div class="sh"><div class="kick">Featured project</div><h2>Headquarters build and relocation, zero downtime</h2><p>I planned and ran the move of the whole head office: firewalls, multi-tier switching, Wi-Fi, voice, servers, CCTV and the LED video wall. Production kept running throughout, and 250+ users were live on day one. Step through it below.</p></div>
+  <div class="box" id="migMap"></div>
 </div></section>
 
 <section id="fit"><div class="wrap">
@@ -416,6 +437,7 @@ svg text{font-family:var(--sans)}
 
 <script type="application/json" id="d-samples">
 [
+{"id":"mig","t":"HQ Migration Map","d":"The head office move as a visual map: phases, layers and how production stayed up.","k":"migration","c":"Systems"},
 {
 "id": "desk",
 "t": "Support Desk",
@@ -1020,6 +1042,28 @@ var R={
    $('#pw',el).innerHTML='<div class="cfx">'+Object.keys(found).map(function(i){return '<div><span class="cl c2">Flag '+(+i+1)+'</span>'+W[i]+'</div>'}).join('')+(n===5?'<div><span class="cl c3">Next</span>Block the sender and domain, pull the email from every mailbox, check who clicked, reset their passwords and send a short heads-up to staff.</div>':'')+'</div>'}
   el.addEventListener('click',function(e){var f=e.target.closest('.fl');if(f){found[f.dataset.i]=1;f.classList.add('hit');upd()}});
   $('#pa',el).onclick=function(){el.querySelectorAll('.fl').forEach(function(f){found[f.dataset.i]=1;f.classList.add('hit')});upd()}},
+ migration:function(el){
+  var L=[['net','Internet lines','Two internet lines into the new site, tested before anything moved.'],['fw','Firewalls','Fortinet firewalls protecting the new network, rules rebuilt and checked against the old site.'],['sw','Multi-tier switching','Core and access switches with VLANs for staff, voice, CCTV and guests.'],['wifi','Wi-Fi','UniFi access points redeployed and integrated with UniFi gateways, with coverage checked floor by floor.'],['voice','Voice','IP PBX systems and SIP trunks migrated, with test calls before users moved.'],['srv','Servers','Remote servers migrated and reconnected over the new network.'],['cctv','CCTV','Dahua, AXIS, Wisenet and UniFi Protect cameras installed and recording.'],['led','LED video wall','Installed and calibrated for the sales floor display.']];
+  var P=[['Plan','survey + design',{},'Survey the new space, design the network and plan each move so the old office keeps working.'],
+   ['Build','new network',{net:'build',fw:'build',sw:'build',wifi:'build'},'Bring up internet, firewalls, switching and Wi-Fi at the new site while everyone still works from the old one.'],
+   ['Move','services',{net:'live',fw:'live',sw:'live',wifi:'live',voice:'build',srv:'build',cctv:'build',led:'build'},'Move voice, servers, cameras and the video wall one at a time, testing each before the next.'],
+   ['Cutover','switch users',{net:'live',fw:'live',sw:'live',wifi:'live',voice:'live',srv:'live',cctv:'live',led:'live'},'Everything at the new site is live and tested. Users switch over, and the old site stays on standby as a fallback.'],
+   ['Day one','250+ users live',{net:'live',fw:'live',sw:'live',wifi:'live',voice:'live',srv:'live',cctv:'live',led:'live'},'Users start work at the new head office. Every step was documented for the handover.']];
+  var ph=0,sel=null;
+  el.innerHTML='<div class="mph" id="mph">'+P.map(function(p,i){return '<button class="tab'+(i?'':' on')+'" data-i="'+i+'">'+(i+1)+'. '+p[0]+'<small>'+p[1]+'</small></button>'}).join('')+'</div><div class="mg"><div class="site" id="old"></div><div class="arw"><svg viewBox="0 0 60 120"><path d="M5 60 H50" stroke="#0f766e" stroke-width="3" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/></path><path d="M42 50 L54 60 L42 70" fill="none" stroke="#0f766e" stroke-width="3"/></svg></div><div class="site" id="new"></div></div><div class="pane mgd" id="mgt"></div><div class="mgb" id="mgb"><b>Result:</b> 250+ users live on day one · zero downtime · every step documented.</div><div class="ctrl"><button class="cb" id="mpv">Back</button><button class="cb p" id="mnx">Next phase</button></div>';
+  function st(k){return P[ph][2][k]||'plan'}
+  function draw(){var oldLive=ph<4;
+   $('#old',el).innerHTML='<h5><span>Old office</span><span>'+(ph<3?'in use':ph===3?'standby':'retired')+'</span></h5>'+L.map(function(l){return '<div class="ly '+(oldLive&&!(ph===3)?'live':'off')+'"><i></i>'+l[1]+'</div>'}).join('');
+   $('#new',el).innerHTML='<h5><span>New head office</span><span>'+['planned','building','moving','live','live'][ph]+'</span></h5>'+L.map(function(l){var s=st(l[0]);return '<button class="ly '+(s==='plan'?'off':s)+(sel===l[0]?' sel':'')+'" data-k="'+l[0]+'"><i></i>'+l[1]+'<span>'+({plan:'planned',build:'in progress',live:'live'})[s]+'</span></button>'}).join('');
+   var t=P[ph][3];if(sel){var x=L.filter(function(l){return l[0]===sel})[0];t='<b>'+x[1]+':</b> '+x[2]}
+   $('#mgt',el).innerHTML='<h5>'+(sel?'Layer detail':'Phase '+(ph+1)+' · '+P[ph][0])+'</h5><p>'+t+'</p>';
+   $('#mgb',el).style.display=ph===4?'block':'none';
+   el.querySelectorAll('#mph .tab').forEach(function(b,j){b.classList.toggle('on',j===ph)});
+   $('#mpv',el).disabled=ph===0;$('#mnx',el).disabled=ph===P.length-1}
+  $('#mph',el).onclick=function(e){var b=e.target.closest('.tab');if(b){ph=+b.dataset.i;sel=null;draw()}};
+  $('#new',el).onclick=function(e){var b=e.target.closest('.ly');if(b){sel=sel===b.dataset.k?null:b.dataset.k;draw()}};
+  $('#mnx',el).onclick=function(){if(ph<P.length-1){ph++;sel=null;draw()}};$('#mpv',el).onclick=function(){if(ph>0){ph--;sel=null;draw()}};
+  draw()},
  ticket:function(el,s,pre){var types=Object.keys(TK),type=(pre&&pre.type)||types[0],vals=(pre&&pre.v)||{};
   el.innerHTML='<div class="tb"><div><div class="fld"><label>Template</label><select id="ty">'+types.map(function(t){return '<option'+(t===type?' selected':'')+'>'+t+'</option>'}).join('')+'</select></div><div id="ff"></div></div><div><div class="prev" id="pv"></div><div class="ctrl"><button class="cb p" id="cp">Copy ticket</button><button class="cb" id="clr">Clear</button><span class="copied" id="ok"></span></div></div></div>';
   function fields(){$('#ff',el).innerHTML=TK[type].map(function(f){var v=esc(vals[f]||'');
@@ -1037,6 +1081,7 @@ var R={
    else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(_){}document.body.removeChild(ta)}};
   fields()}
 };
+R.migration($('#migMap'));
 })();
 </script>
 </body>
