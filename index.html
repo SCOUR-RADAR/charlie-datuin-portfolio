@@ -277,6 +277,15 @@ svg text{font-family:var(--sans)}
 .rbt i{position:absolute;top:0;bottom:0}
 .rbt.sc{background:none;height:16px;overflow:visible}.rbt.sc b{position:absolute;font:11px var(--mono);color:var(--mut)}
 .rbl{display:grid;grid-template-columns:110px 1fr;gap:8px}
+.snapbar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;position:relative}
+@media(max-width:700px){.snapbar{grid-template-columns:repeat(2,1fr)}}
+.sbn{text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:2px;border-top:4px solid #c3ccd6}
+.sbn b{font-size:13px;color:var(--pri)}.sbn span{font-size:13.5px;font-weight:600;color:var(--ink)}
+.sbn:hover{border-color:var(--pri)}.sbn.on{border-color:var(--pri);border-top-color:var(--pri);background:var(--pri2)}
+.snapc{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+@media(max-width:760px){.snapc{grid-template-columns:1fr}}
+.snl{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
+.snl li{padding-left:18px;position:relative;font-size:15px}.snl li::before{content:"";position:absolute;left:3px;top:10px;width:7px;height:7px;border-radius:2px;background:var(--pri)}
 .copied{color:var(--ok);font-size:14px;font-weight:600;align-self:center}
 </style>
 </head>
@@ -343,7 +352,8 @@ svg text{font-family:var(--sans)}
 </div></section>
 
 <section id="exp"><div class="wrap">
-  <div class="sh"><div class="kick">Experience</div><h2>Where the experience comes from</h2></div>
+  <div class="sh"><div class="kick">Experience</div><h2>Where the experience comes from</h2><p>Tap a role for a quick snapshot.</p></div>
+  <div class="box" id="snap" style="margin-bottom:26px"></div>
   <div class="tl" id="tl"><div class="job"><div class="when">Aug 2023 – Present</div><h4>IT Operations Executive (sole in-house IT)</h4><div class="co">250+ person company · 7 offices · Dubai, UAE</div><p>Run every layer of IT for the head office and the international offices. Led the headquarters build and relocation with 250+ users live on day one and zero downtime. Network and voice infrastructure, CCTV, endpoints, vendor and contractor coordination, platform release support and remote support, reporting to executive leadership.</p></div><div class="job past"><div class="when">Jul 2022 – Aug 2023</div><h4>IT Administrator</h4><div class="co">Technology company · Dubai, UAE</div><p>Day-to-day systems and network administration, user support and asset management.</p></div><div class="job past"><div class="when">Nov 2020 – Aug 2021</div><h4>Web Hosting Technical Support Specialist</h4><div class="co">Global outsourcing company · Philippines</div><p>Hosting, DNS, email and server support for international customers.</p></div><div class="job past"><div class="when">Aug 2006 – Aug 2016</div><h4>Technical Support Professional</h4><div class="co">Enterprise support for a major US telecom carrier · Philippines</div><p>Supported enterprise and SMB network services: VPN, IPSec, MPLS, WAN/LAN. Subject-matter expert for escalations.</p></div><div class="job past"><div class="when">Jun 2004 – Sep 2004</div><h4>IT Help Desk Support</h4><div class="co">IT distributor · Philippines</div><p>First-line hardware and software support.</p></div></div>
   <div class="edu"><b>B.Sc. Computer Engineering</b> <span class="mut">· Far Eastern University, Institute of Information Technology, Manila</span><br><b>In progress:</b> <span class="mut">CompTIA Security+ · Blue Team Level 1</span></div>
 </div></section>
@@ -1050,6 +1060,17 @@ var R={
    $('#pw',el).innerHTML='<div class="cfx">'+Object.keys(found).map(function(i){return '<div><span class="cl c2">Flag '+(+i+1)+'</span>'+W[i]+'</div>'}).join('')+(n===5?'<div><span class="cl c3">Next</span>Block the sender and domain, pull the email from every mailbox, check who clicked, reset their passwords and send a short heads-up to staff.</div>':'')+'</div>'}
   el.addEventListener('click',function(e){var f=e.target.closest('.fl');if(f){found[f.dataset.i]=1;f.classList.add('hit');upd()}});
   $('#pa',el).onclick=function(){el.querySelectorAll('.fl').forEach(function(f){found[f.dataset.i]=1;f.classList.add('hit')});upd()}},
+ career:function(el){
+  var J=[['2004','IT Help Desk','Where it started',['First-line hardware and software support','Desktop setup, printers and peripherals','Logging and closing tickets'],['Windows','Hardware','Printers','Ticketing'],'A PC will not boot after a power cut.','The basics done right, and patience with users.'],
+   ['2006–2016','Enterprise Network Support','Ten years with a major US carrier',['Enterprise and SMB network services','VPN, IPSec, MPLS and WAN/LAN troubleshooting','Go-to person for escalations'],['VPN','IPSec','MPLS','WAN/LAN','Routing'],'A branch loses its link over the carrier network during business hours.','Deep network fundamentals and calm under pressure.'],
+   ['2020–2021','Web Hosting Support','International customers',['Hosting, DNS, email and server support','Customers across many time zones','Clear written answers'],['DNS','Email','Linux hosting','cPanel-style panels'],'A website goes down right after a DNS change.','How the internet side really works, and writing fixes people can follow.'],
+   ['2022–2023','IT Administrator','Dubai',['Systems and network administration','User support and onboarding','Asset tracking'],['Windows Server','Networking','M365','Assets'],'A new joiner needs an account, a laptop and access by tomorrow.','Owning systems end to end, not just tickets.'],
+   ['2023–now','IT Operations Executive','Sole in-house IT · 250+ users · 7 offices',['Every IT layer, alone','Headquarters build and relocation with zero downtime','Remote support across several countries'],['Fortinet','UniFi','VoIP / SIP','CCTV','AD / GPO'],'Calls to one country start failing right after a platform release.','Everything above, combined into one role.']];
+  var cur=4;
+  el.innerHTML='<div class="snapbar" id="sb">'+J.map(function(j,i){return '<button class="sbn'+(i===cur?' on':'')+'" data-i="'+i+'"><b>'+j[0]+'</b><span>'+j[1]+'</span></button>'}).join('')+'</div><div id="sv"></div>';
+  function draw(){var j=J[cur];el.querySelectorAll('.sbn').forEach(function(b,i){b.classList.toggle('on',i===cur)});
+   $('#sv',el).innerHTML='<div class="snapc"><div><div class="lbl" style="font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc)">'+j[0]+'</div><h4 style="font-size:19px;margin:4px 0 2px">'+j[1]+'</h4><div class="mut" style="font-size:14.5px;margin-bottom:10px">'+j[2]+'</div><ul class="snl">'+j[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="tagl">'+j[4].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</div></div><div class="cfx"><div><span class="cl c2">Example ticket</span>'+j[5]+'</div><div><span class="cl c3">What it gave me</span>'+j[6]+'</div></div></div>'}
+  $('#sb',el).onclick=function(e){var b=e.target.closest('.sbn');if(b){cur=+b.dataset.i;draw()}};draw()},
  remote:function(el){
   var S=[['United Kingdom','Europe/London',-0.1,51.5],['Germany','Europe/Berlin',13.4,52.5],['Italy','Europe/Rome',9.2,45.5],['Hungary','Europe/Budapest',19.0,47.5],['Israel','Asia/Jerusalem',34.8,32.1],['Hong Kong','Asia/Hong_Kong',114.2,22.3],['Taiwan','Asia/Taipei',121.5,25.0]];
   var HQ=['Dubai HQ','Asia/Dubai',55.3,25.2];
@@ -1135,7 +1156,7 @@ var R={
    else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(_){}document.body.removeChild(ta)}};
   fields()}
 };
-R.migration($('#migMap'));
+R.migration($('#migMap'));R.career($('#snap'));
 })();
 </script>
 </body>
