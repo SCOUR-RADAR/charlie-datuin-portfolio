@@ -271,6 +271,12 @@ svg text{font-family:var(--sans)}
 .mgd{margin-top:14px}
 .mgb{margin-top:12px;padding:14px;border-radius:10px;background:var(--navy);color:#dfe6ef;font-size:15px;display:none}
 .mgb b{color:#7fd1c7}
+.rbr{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:center;font-size:13px;margin-bottom:5px}
+.rbr.on span{font-weight:700;color:var(--acc)}
+.rbt{position:relative;height:14px;border-radius:4px;background:var(--line);overflow:hidden}
+.rbt i{position:absolute;top:0;bottom:0}
+.rbt.sc{background:none;height:16px;overflow:visible}.rbt.sc b{position:absolute;font:11px var(--mono);color:var(--mut)}
+.rbl{display:grid;grid-template-columns:110px 1fr;gap:8px}
 .copied{color:var(--ok);font-size:14px;font-weight:600;align-self:center}
 </style>
 </head>
@@ -437,6 +443,7 @@ svg text{font-family:var(--sans)}
 
 <script type="application/json" id="d-samples">
 [
+{"id":"remote","t":"Remote Support Map","d":"How I support real estate agents working abroad across time zones, from one desk in Dubai.","k":"remote","c":"Support"},
 {"id":"infra","t":"Office Infrastructure Map","d":"The kind of multi-site setup I run, end to end. Click any part, or trace how traffic flows.","k":"infra","c":"Network"},
 {"id":"mig","t":"HQ Migration Map","d":"The head office move as a visual map: phases, layers and how production stayed up.","k":"migration","c":"Systems"},
 {
@@ -1043,6 +1050,33 @@ var R={
    $('#pw',el).innerHTML='<div class="cfx">'+Object.keys(found).map(function(i){return '<div><span class="cl c2">Flag '+(+i+1)+'</span>'+W[i]+'</div>'}).join('')+(n===5?'<div><span class="cl c3">Next</span>Block the sender and domain, pull the email from every mailbox, check who clicked, reset their passwords and send a short heads-up to staff.</div>':'')+'</div>'}
   el.addEventListener('click',function(e){var f=e.target.closest('.fl');if(f){found[f.dataset.i]=1;f.classList.add('hit');upd()}});
   $('#pa',el).onclick=function(){el.querySelectorAll('.fl').forEach(function(f){found[f.dataset.i]=1;f.classList.add('hit')});upd()}},
+ remote:function(el){
+  var S=[['United Kingdom','Europe/London',-0.1,51.5],['Germany','Europe/Berlin',13.4,52.5],['Italy','Europe/Rome',9.2,45.5],['Hungary','Europe/Budapest',19.0,47.5],['Israel','Asia/Jerusalem',34.8,32.1],['Hong Kong','Asia/Hong_Kong',114.2,22.3],['Taiwan','Asia/Taipei',121.5,25.0]];
+  var HQ=['Dubai HQ','Asia/Dubai',55.3,25.2];
+  function hr(tz){var p=new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());return p}
+  function off(tz){var d=new Date(),f=function(z){var s=new Intl.DateTimeFormat('en-US',{timeZone:z,hour:'numeric',minute:'numeric',hour12:false}).formatToParts(d);var H=+s.filter(function(x){return x.type==='hour'})[0].value%24,M=+s.filter(function(x){return x.type==='minute'})[0].value;return H*60+M};var o=(f(tz)-f('Asia/Dubai'))/60;if(o>12)o-=24;if(o<-12)o+=24;return o}
+  var X=function(l){return (l+12)*4.3},Y=function(a){return (58-a)*7.2};
+  var sel=null;
+  el.innerHTML='<div id="rm"></div><div class="mrow"><div class="pane" id="rd"><h5>Pick a location</h5><p class="mut">Click any dot to see local time, overlap with Dubai working hours and how I support agents there.</p></div><div class="pane"><h5>Working-hours overlap (Dubai time)</h5><div id="rb"></div></div></div><div class="q" style="font-size:16px;margin:16px 0 10px">A remote support session, step by step</div><div class="prog" id="rp"></div><div class="pane" id="rs"></div><div class="ctrl"><button class="cb" id="rk">Back</button><button class="cb p" id="rn">Next step</button></div>';
+  function map(){var s='';for(var g=0;g<=600;g+=60)s+='<line x1="'+g+'" y1="0" x2="'+g+'" y2="300" stroke="#e2e6ec"/>';for(g=0;g<=300;g+=50)s+='<line x1="0" y1="'+g+'" x2="600" y2="'+g+'" stroke="#e2e6ec"/>';
+   var hx=X(HQ[2]),hy=Y(HQ[3]);
+   S.forEach(function(c,i){var x=X(c[2]),y=Y(c[3]),mx=(x+hx)/2,my=Math.min(y,hy)-40,on=sel===i;
+    s+='<path d="M'+hx+' '+hy+' Q '+mx+' '+my+' '+x+' '+y+'" fill="none" stroke="'+(on?'#b8740a':'#0f766e')+'" stroke-width="'+(on?3:1.6)+'" stroke-dasharray="5 5" opacity="'+(sel===null||on?1:.35)+'"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.2s" repeatCount="indefinite"/></path>'});
+   S.forEach(function(c,i){var x=X(c[2]),y=Y(c[3]),on=sel===i,ly=i===0||i===1?y-12:y+20;
+    s+='<g class="node" data-i="'+i+'"><circle cx="'+x+'" cy="'+y+'" r="'+(on?9:7)+'" fill="'+(on?'#b8740a':'#0f766e')+'" stroke="#fff" stroke-width="2"/><text x="'+x+'" y="'+ly+'" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0f1b2d">'+c[0]+'</text><text x="'+x+'" y="'+(ly+13)+'" text-anchor="middle" font-size="10.5" fill="#5f6c7d">'+hr(c[1])+'</text></g>'});
+   s+='<circle cx="'+hx+'" cy="'+hy+'" r="13" fill="#14263f" stroke="#7fd1c7" stroke-width="3"/><text x="'+hx+'" y="'+(hy+30)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="#14263f">Dubai HQ · '+hr(HQ[1])+'</text>';
+   $('#rm',el).innerHTML='<svg viewBox="0 0 600 300" width="100%" style="background:#f6f7f9;border-radius:12px">'+s+'</svg>'}
+  function bars(){var row=function(n,o,hl){var a=9-o,b=18-o,seg=function(s,e,c){s=Math.max(0,s);e=Math.min(24,e);return e>s?'<i style="left:'+(s/24*100)+'%;width:'+((e-s)/24*100)+'%;background:'+c+'"></i>':''};
+     var bg=seg(a,b,'#c9dcea')+seg(a-24,b-24,'#c9dcea')+seg(a+24,b+24,'#c9dcea');var ov=seg(Math.max(a,9),Math.min(b,18),'#0f766e')+seg(Math.max(a+24,9),Math.min(b+24,18),'#0f766e')+seg(Math.max(a-24,9),Math.min(b-24,18),'#0f766e');
+     return '<div class="rbr'+(hl?' on':'')+'"><span>'+n+'</span><div class="rbt">'+bg+ov+'</div></div>'};
+   $('#rb',el).innerHTML=S.map(function(c,i){return row(c[0],off(c[1]),sel===i)}).join('')+'<div class="rbl"><span></span><div class="rbt sc"><b style="left:0">00</b><b style="left:37.5%">09</b><b style="left:75%">18</b><b style="right:0">24</b></div></div><div class="tagl"><span class="tg">Teal = both sides working</span><span class="tg">Light = their hours only</span></div>'}
+  var TIPS={'United Kingdom':'Mornings in Dubai are their early start, so I clear their overnight messages first.','Germany':'Good overlap. Most fixes are done live in the same day.','Italy':'Good overlap. Calling issues to Italian numbers are traced with the carrier.','Hungary':'Good overlap. Same-day remote sessions.','Israel':'Almost the same hours, so it works like a local office.','Hong Kong':'They finish as Dubai starts, so I pick up their tickets first thing and leave clear self-help steps.','Taiwan':'Little overlap. Tickets get written steps they can follow alone, and a session booked at the start of their day.'};
+  function detail(){if(sel===null)return;var c=S[sel],o=off(c[1]);$('#rd',el).innerHTML='<h5>'+c[0]+'</h5><div class="kv"><div><span>Local time</span><b>'+hr(c[1])+'</b></div><div><span>vs Dubai</span><b>'+(o>0?'+':'')+o+' h</b></div></div><p style="margin-top:10px;font-size:14.5px">'+TIPS[c[0]]+'</p>'}
+  var F=[['Agent reports it','A WhatsApp message with a screenshot, usually outside Dubai hours.'],['Intake template','I reply with the short template: name, email, what fails, and three affected records. No blanks.'],['Self-help first','Steps they can do alone in two minutes: clear cache, hard refresh, restart the browser, sign in again, check the microphone.'],['Remote session','If it is still broken, a screen-share session with their consent at a time that suits their day.'],['Fix and follow up','Fixed and logged. A check-in at the start of their next day, plus a short guide so it does not happen again.']];
+  var st=0;function flow(){$('#rp',el).innerHTML=F.map(function(_,j){return '<i class="'+(j<=st?'on':'')+'"></i>'}).join('');$('#rs',el).innerHTML='<h5>Step '+(st+1)+' · '+F[st][0]+'</h5><p>'+F[st][1]+'</p>';$('#rk',el).disabled=st===0;$('#rn',el).disabled=st===F.length-1}
+  $('#rn',el).onclick=function(){if(st<F.length-1){st++;flow()}};$('#rk',el).onclick=function(){if(st>0){st--;flow()}};
+  el.addEventListener('click',function(e){var g=e.target.closest('#rm .node');if(g){sel=+g.dataset.i;map();bars();detail()}});
+  map();bars();flow()},
  infra:function(el){
   var N={m365:[20,14,'Email &amp; files','Cloud'],plat:[230,14,'Business platform','Cloud web app'],voice:[440,14,'Cloud voice','SIP trunks · intl numbers'],
    isp:[230,92,'Internet','2 lines · failover'],rem:[20,170,'Remote users','VPN + MFA'],fw:[230,170,'Firewall','rules · VPN · filtering'],br:[440,170,'Branch offices','6 sites · site-to-site VPN'],
