@@ -1,4 +1,4 @@
-# Charlie Datuin | IT Operations & Infrastructure
+# Charlie Bato Datuin | IT Operations & Infrastructure
 
 Personal portfolio site. 15+ years across networks, systems, telephony, security and end-user support, currently the sole in-house IT for a multi-site, multi-country company in Dubai.
 
@@ -20,4 +20,4 @@ Open `index.html` in any browser. No install or build step.
 
 ---
 
-© Charlie Datuin · Dubai, UAE
+© Charlie Bato Datuin · Dubai, UAE
