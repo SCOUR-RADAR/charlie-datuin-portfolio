@@ -292,6 +292,10 @@ svg text{font-family:var(--sans)}
 .fl2 i{height:22px;border-radius:4px;background:#2a3d58;animation:lit .4s forwards}
 @keyframes lit{to{background:#0f766e}}
 .bcap{font-size:13px;color:#dfe6ef;margin-top:6px;text-align:center}
+.esc{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.esc span{color:var(--mut);font-weight:700}
+.escs{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13.5px;font-weight:600}
+.escs.me{border-color:var(--pri);color:var(--pri)}.escs.on{background:var(--pri);color:#fff;border-color:var(--pri)}
 .copied{color:var(--ok);font-size:14px;font-weight:600;align-self:center}
 </style>
 </head>
@@ -354,7 +358,7 @@ svg text{font-family:var(--sans)}
 <section id="work" class="alt"><div class="wrap">
   <div class="sh"><div class="kick">Work samples</div><h2>Try a few things I do every day</h2><p>Short hands-on samples with made-up data. Filter by area, click any card and have a go. The full versions and the real cases behind them are better shown in an interview.</p></div>
   <div class="roles" id="sf"><button class="rt on" data-c="All">All</button><button class="rt" data-c="Support">Support</button><button class="rt" data-c="Network">Network</button><button class="rt" data-c="Systems">Systems</button><button class="rt" data-c="Security">Security</button></div>
-  <div class="samples" id="samples"><button class="s" data-i="0"><span class="sc">Support</span><h4>Support Desk</h4><p>Everyday user issues and the order I work through them.</p><div class="go">Try it →</div></button><button class="s" data-i="1"><span class="sc">Network</span><h4>Network Monitoring</h4><p>A live-style view of office network devices. Click any device, or trigger an incident and watch the failover.</p><div class="go">Try it →</div></button><button class="s" data-i="2"><span class="sc">Network</span><h4>Wi-Fi Troubleshooter</h4><p>Why office Wi-Fi feels slow, and the channel fix that solves a lot of it.</p><div class="go">Try it →</div></button><button class="s" data-i="3"><span class="sc">Network</span><h4>Office Network Map</h4><p>How I segment an office network into VLANs. Click a segment or test what traffic is allowed.</p><div class="go">Try it →</div></button><button class="s" data-i="4"><span class="sc">Network</span><h4>Subnet Calculator</h4><p>Type an address and prefix to get the network range, usable hosts and mask, or split it for VLANs.</p><div class="go">Try it →</div></button><button class="s" data-i="5"><span class="sc">Systems</span><h4>New Starter Setup</h4><p>Joiner and leaver checklists, run the way I do them so nothing gets missed.</p><div class="go">Try it →</div></button><button class="s" data-i="6"><span class="sc">Systems</span><h4>CCTV Camera Check</h4><p>One camera stops recording. Find the cause without taking the others down.</p><div class="go">Try it →</div></button><button class="s" data-i="7"><span class="sc">Security</span><h4>Phishing Spotter</h4><p>A suspicious email a user forwarded. Find the five red flags.</p><div class="go">Try it →</div></button><button class="s" data-i="8"><span class="sc">Systems</span><h4>Daily Health Check</h4><p>The quick morning check I run before users arrive.</p><div class="go">Try it →</div></button><button class="s" data-i="9"><span class="sc">Support</span><h4>Triage to Ticket</h4><p>A user complaint taken from first contact to a clean escalation, then into a ready-to-send ticket.</p><div class="go">Try it →</div></button><button class="s" data-i="10"><span class="sc">Systems</span><h4>Release Readiness Card</h4><p>How I prepare for a platform release: scope, what could break, mitigation and who owns what.</p><div class="go">Try it →</div></button><button class="s" data-i="11"><span class="sc">Network</span><h4>Call Path Tracer</h4><p>One question splits every call problem in two: did the phone ring?</p><div class="go">Try it →</div></button><button class="s" data-i="12"><span class="sc">Network</span><h4>Command Lab</h4><p>The commands I run first on a network ticket, and what each result tells me.</p><div class="go">Try it →</div></button><button class="s" data-i="13"><span class="sc">Support</span><h4>Ticket Builder</h4><p>A simple template builder for incidents, requests, escalations, handovers and incident reports.</p><div class="go">Try it →</div></button><div class="s lock"><span class="sc">Network</span><h4>Multi-Site Test Lab</h4><p>A nine-site practice network with directory services, patching, imaging, monitoring and VPN.</p><div class="go">Shown in interview</div></div><div class="s lock"><span class="sc">Security</span><h4>Security Field Guide</h4><p>A defender-first reference: each threat mapped to what to detect and how to respond.</p><div class="go">Shown in interview</div></div><div class="s lock"><span class="sc">Systems</span><h4>Offline Knowledge Assistant</h4><p>A local assistant that searches my runbooks and notes without internet.</p><div class="go">Shown in interview</div></div></div>
+  <div class="samples" id="samples"><button class="s" data-i="0"><span class="sc">Network</span><h4>Carrier Network Support</h4><p>Ten years supporting business networks for a major US carrier: remote access to edge routers and firewalls across the MPLS core, from the NOC to the end user.</p><div class="go">Try it →</div></button><button class="s" data-i="1"><span class="sc">Support</span><h4>Remote Support Map</h4><p>How I support real estate agents working abroad across time zones, from one desk in Dubai.</p><div class="go">Try it →</div></button><button class="s" data-i="2"><span class="sc">Network</span><h4>Office Infrastructure Map</h4><p>The kind of multi-site setup I run, end to end. Click any part, or trace how traffic flows.</p><div class="go">Try it →</div></button><button class="s" data-i="3"><span class="sc">Systems</span><h4>HQ Migration Map</h4><p>The head office move as a visual map: phases, layers and how production stayed up.</p><div class="go">Try it →</div></button><button class="s" data-i="4"><span class="sc">Support</span><h4>Support Desk</h4><p>Everyday user issues and the order I work through them.</p><div class="go">Try it →</div></button><button class="s" data-i="5"><span class="sc">Network</span><h4>Network Monitoring</h4><p>A live-style view of office network devices. Click any device, or trigger an incident and watch the failover.</p><div class="go">Try it →</div></button><button class="s" data-i="6"><span class="sc">Network</span><h4>Wi-Fi Troubleshooter</h4><p>Why office Wi-Fi feels slow, and the channel fix that solves a lot of it.</p><div class="go">Try it →</div></button><button class="s" data-i="7"><span class="sc">Network</span><h4>Office Network Map</h4><p>How I segment an office network into VLANs. Click a segment or test what traffic is allowed.</p><div class="go">Try it →</div></button><button class="s" data-i="8"><span class="sc">Network</span><h4>Subnet Calculator</h4><p>Type an address and prefix to get the network range, usable hosts and mask, or split it for VLANs.</p><div class="go">Try it →</div></button><button class="s" data-i="9"><span class="sc">Systems</span><h4>CCTV Camera Check</h4><p>One camera stops recording. Find the cause without taking the others down.</p><div class="go">Try it →</div></button><button class="s" data-i="10"><span class="sc">Systems</span><h4>Daily Health Check</h4><p>The quick morning check I run before users arrive.</p><div class="go">Try it →</div></button><button class="s" data-i="11"><span class="sc">Support</span><h4>Triage to Ticket</h4><p>A user complaint taken from first contact to a clean escalation, then into a ready-to-send ticket.</p><div class="go">Try it →</div></button><button class="s" data-i="12"><span class="sc">Systems</span><h4>Release Readiness Card</h4><p>How I prepare for a platform release: scope, what could break, mitigation and who owns what.</p><div class="go">Try it →</div></button><button class="s" data-i="13"><span class="sc">Network</span><h4>Call Path Tracer</h4><p>One question splits every call problem in two: did the phone ring?</p><div class="go">Try it →</div></button><button class="s" data-i="14"><span class="sc">Network</span><h4>Command Lab</h4><p>The commands I run first on a network ticket, and what each result tells me.</p><div class="go">Try it →</div></button><button class="s" data-i="15"><span class="sc">Support</span><h4>Ticket Builder</h4><p>A simple template builder for incidents, requests, escalations, handovers and incident reports.</p><div class="go">Try it →</div></button><div class="s lock"><span class="sc">Network</span><h4>Multi-Site Test Lab</h4><p>A nine-site practice network with directory services, patching, imaging, monitoring and VPN.</p><div class="go">Shown in interview</div></div><div class="s lock"><span class="sc">Security</span><h4>Security Field Guide</h4><p>A defender-first reference: each threat mapped to what to detect and how to respond.</p><div class="go">Shown in interview</div></div><div class="s lock"><span class="sc">Systems</span><h4>Offline Knowledge Assistant</h4><p>A local assistant that searches my runbooks and notes without internet.</p><div class="go">Shown in interview</div></div></div>
 </div></section>
 
 <section id="exp"><div class="wrap">
@@ -459,9 +463,34 @@ svg text{font-family:var(--sans)}
 
 <script type="application/json" id="d-samples">
 [
-{"id":"remote","t":"Remote Support Map","d":"How I support real estate agents working abroad across time zones, from one desk in Dubai.","k":"remote","c":"Support"},
-{"id":"infra","t":"Office Infrastructure Map","d":"The kind of multi-site setup I run, end to end. Click any part, or trace how traffic flows.","k":"infra","c":"Network"},
-{"id":"mig","t":"HQ Migration Map","d":"The head office move as a visual map: phases, layers and how production stayed up.","k":"migration","c":"Systems"},
+{
+"id": "carrier",
+"t": "Carrier Network Support",
+"d": "Ten years supporting business networks for a major US carrier: remote access to edge routers and firewalls across the MPLS core, from the NOC to the end user.",
+"k": "carrier",
+"c": "Network"
+},
+{
+"id": "remote",
+"t": "Remote Support Map",
+"d": "How I support real estate agents working abroad across time zones, from one desk in Dubai.",
+"k": "remote",
+"c": "Support"
+},
+{
+"id": "infra",
+"t": "Office Infrastructure Map",
+"d": "The kind of multi-site setup I run, end to end. Click any part, or trace how traffic flows.",
+"k": "infra",
+"c": "Network"
+},
+{
+"id": "mig",
+"t": "HQ Migration Map",
+"d": "The head office move as a visual map: phases, layers and how production stayed up.",
+"k": "migration",
+"c": "Systems"
+},
 {
 "id": "desk",
 "t": "Support Desk",
@@ -598,25 +627,11 @@ svg text{font-family:var(--sans)}
 "c": "Network"
 },
 {
-"id": "onboard",
-"t": "New Starter Setup",
-"d": "Joiner and leaver checklists, run the way I do them so nothing gets missed.",
-"k": "onboard",
-"c": "Systems"
-},
-{
 "id": "cctv",
 "t": "CCTV Camera Check",
 "d": "One camera stops recording. Find the cause without taking the others down.",
 "k": "cctv",
 "c": "Systems"
-},
-{
-"id": "phish",
-"t": "Phishing Spotter",
-"d": "A suspicious email a user forwarded. Find the five red flags.",
-"k": "phish",
-"c": "Security"
 },
 {
 "id": "health",
@@ -1066,9 +1081,35 @@ var R={
    $('#pw',el).innerHTML='<div class="cfx">'+Object.keys(found).map(function(i){return '<div><span class="cl c2">Flag '+(+i+1)+'</span>'+W[i]+'</div>'}).join('')+(n===5?'<div><span class="cl c3">Next</span>Block the sender and domain, pull the email from every mailbox, check who clicked, reset their passwords and send a short heads-up to staff.</div>':'')+'</div>'}
   el.addEventListener('click',function(e){var f=e.target.closest('.fl');if(f){found[f.dataset.i]=1;f.classList.add('hit');upd()}});
   $('#pa',el).onclick=function(){el.querySelectorAll('.fl').forEach(function(f){found[f.dataset.i]=1;f.classList.add('hit')});upd()}},
+ carrier:function(el){
+  var N={me:[8,120,118,'Remote engineer','Tier 2/3 · SME'],acc:[146,120,118,'Secure access','jump host · AAA login'],core:[284,110,130,'Carrier MPLS core','PE routers · BGP / VRF'],
+   ceA:[444,24,96,'Edge router A','CE · customer site'],asaA:[556,24,96,'Firewall A','ASA'],lanA:[556,92,96,'Site A LAN','users · servers'],
+   ceB:[444,196,96,'Edge router B','CE · customer site'],asaB:[556,196,96,'Firewall B','ASA'],lanB:[556,264,96,'Site B LAN','users · servers']};
+  var E=[['me','acc'],['acc','core'],['core','ceA'],['core','ceB'],['ceA','asaA'],['asaA','lanA'],['ceB','asaB'],['asaB','lanB'],['asaA','asaB',1]];
+  var T=[['Site A is down: circuit or router?',['me','acc','core','ceA'],[['show bgp vpnv4 unicast vrf CUST summary','Neighbor 10.0.0.2  State: Idle   Up/Down: 00:04:12','BGP to the site A edge router dropped 4 minutes ago.'],['ping vrf CUST 10.0.0.2','.....  Success rate is 0 percent (0/5)','The edge router does not answer across the core.'],['show interfaces Serial0/1/0','line protocol is down · carrier transitions 6','The access circuit is flapping. A line fault, so the field team and the local loop provider get the ticket.']]],
+   ['Slow application between sites',['me','acc','core','ceA','ceB'],[['show policy-map interface Gi0/0 output','class VOICE  drops 0 · class DATA  drops 18,442','The data class is dropping traffic. The link is full at peak hours.'],['show interfaces Gi0/0 | include rate','output rate 98% of line rate','The circuit is saturated. Recommend a bandwidth upgrade or a QoS change to the customer.']]],
+   ['Site-to-site VPN is down',['me','acc','core','ceA','asaA','asaB'],[['show crypto isakmp sa','dst 203.0.113.20  state MM_NO_STATE','Phase 1 is not completing between the two firewalls.'],['show run crypto map | include peer','set peer 203.0.113.21','Peer address does not match the far side (.20). Typo after a change. Fix the peer, tunnel comes up.']]],
+   ['MPLS fails: does the backup VPN take over?',['asaA','asaB','lanA','lanB'],[['show route | include 0.0.0.0','S* 0.0.0.0 via backup ISP (track 1 down)','The primary path is tracked as down, so traffic moved to the backup internet line.'],['show crypto ipsec sa | include pkts','#pkts encaps: 12,883  #pkts decaps: 12,801','Traffic is flowing over the IPSec backup tunnel. Sites stay connected until the circuit is fixed.']]]];
+  var F=[['End user','Calls in: the site or the app is down.'],['Help desk / service desk','Logs the ticket and runs first checks.'],['NOC','Sees the alarm, confirms the circuit or device is down.'],['Tier 2/3 SME (me)','Logs in remotely to the edge router and firewall, finds the cause, fixes it or hands a clear diagnosis on.'],['Field team / provider','Dispatched only when the fault is physical, with the exact location of the problem.']];
+  var on=[],ti=-1,ci=0;
+  function c(k){var n=N[k];return [n[0]+n[2]/2,n[1]+22]}
+  function svg(){var s='<ellipse cx="349" cy="142" rx="88" ry="62" fill="#e6f3f1" stroke="#0f766e" stroke-dasharray="4 4"/>';
+   E.forEach(function(e){var a=c(e[0]),b=c(e[1]),hit=on.indexOf(e[0])>-1&&on.indexOf(e[1])>-1;
+    if(e[2]){s+='<path d="M'+(a[0]+48)+' '+a[1]+' C 690 '+a[1]+' 690 '+b[1]+' '+(b[0]+48)+' '+b[1]+'" fill="none" stroke="'+(hit?'#b8740a':'#c3ccd6')+'" stroke-width="'+(hit?3.5:2)+'" stroke-dasharray="6 5"/><text x="672" y="'+((a[1]+b[1])/2)+'" font-size="10" fill="#5f6c7d" transform="rotate(90 672 '+((a[1]+b[1])/2)+')" text-anchor="middle">IPSec VPN backup</text>';return}
+    s+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+(hit?'#0f766e':'#c3ccd6')+'" stroke-width="'+(hit?4:2)+'"'+(hit?' stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur=".8s" repeatCount="indefinite"/></line>':'/>')});
+   Object.keys(N).forEach(function(k){var n=N[k],hit=on.indexOf(k)>-1;
+    s+='<g><rect x="'+n[0]+'" y="'+n[1]+'" width="'+n[2]+'" height="44" rx="9" fill="'+(hit?'#e6f3f1':'#fff')+'" stroke="'+(hit?'#0f766e':'#14263f')+'" stroke-width="'+(hit?2.5:1.3)+'"/><text x="'+(n[0]+n[2]/2)+'" y="'+(n[1]+19)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#0f1b2d">'+n[3]+'</text><text x="'+(n[0]+n[2]/2)+'" y="'+(n[1]+34)+'" text-anchor="middle" font-size="10" fill="#5f6c7d">'+n[4]+'</text></g>'});
+   return '<svg viewBox="0 0 700 316" width="100%" style="background:#f6f7f9;border-radius:12px">'+s+'</svg>'}
+  el.innerHTML='<div class="tagl" style="margin:0 0 10px"><span class="tg">Global support: US · EU · APAC</span><span class="tg">Business customers</span><span class="tg">All remote</span></div><div id="cm"></div><div class="q" style="font-size:16px;margin:14px 0 10px">Work a case</div><div class="choices" id="ct">'+T.map(function(t,i){return '<button class="ch" data-i="'+i+'">'+t[0]+'</button>'}).join('')+'</div><div id="cw" style="margin-top:12px"></div><div class="q" style="font-size:16px;margin:18px 0 10px">Who does what</div><div class="esc" id="ce">'+F.map(function(f,i){return '<button class="escs'+(i===3?' me':'')+'" data-i="'+i+'">'+f[0]+'</button>'}).join('<span>›</span>')+'</div><div class="pane" id="cf" style="margin-top:10px"><p>'+F[3][1]+'</p></div>';
+  function draw(){$('#cm',el).innerHTML=svg()}
+  function step(){var t=T[ti],cm=t[2][ci];$('#cw',el).innerHTML='<div class="term"><div class="bar"><i></i><i></i><i></i></div><pre><span class="p">router# </span>'+cm[0]+'\n'+cm[1]+'</pre></div><div class="hint" style="display:block"><b>What it tells me:</b> '+cm[2]+'</div><div class="ctrl"><button class="cb p" id="cn"'+(ci>=t[2].length-1?' disabled':'')+'>Next check</button><span class="mut" style="align-self:center;font-size:13px">Check '+(ci+1)+' of '+t[2].length+'</span></div>';
+   var n=$('#cn',el);if(n)n.onclick=function(){if(ci<t[2].length-1){ci++;step()}}}
+  el.addEventListener('click',function(e){var b=e.target.closest('#ct .ch');if(b){ti=+b.dataset.i;ci=0;on=T[ti][1];el.querySelectorAll('#ct .ch').forEach(function(x){x.classList.toggle('sel',x===b)});draw();step();return}
+   var f=e.target.closest('.escs');if(f){el.querySelectorAll('.escs').forEach(function(x){x.classList.toggle('on',x===f)});$('#cf',el).innerHTML='<p><b>'+F[+f.dataset.i][0]+':</b> '+F[+f.dataset.i][1]+'</p>'}});
+  draw()},
  career:function(el){
   var J=[['2004','IT Help Desk','Where it started',['First-line hardware and software support','Desktop setup, printers and peripherals','Logging and closing tickets'],['Windows','Hardware','Printers','Ticketing'],'A PC will not boot after a power cut.','The basics done right, and patience with users.'],
-   ['2006–2016','Enterprise Network Support','Ten years with a major US carrier',['Enterprise and SMB network services','VPN, IPSec, MPLS and WAN/LAN troubleshooting','Go-to person for escalations'],['VPN','IPSec','MPLS','WAN/LAN','Routing'],'A branch loses its link over the carrier network during business hours.','Deep network fundamentals and calm under pressure.'],
+   ['2006–2016','Enterprise Network Support','Ten years with a major US carrier · global',['Remote support of business networks: edge routers, ASA firewalls, MPLS and IPSec VPN','Worked with help desks, service desks, NOCs and end users across the US, EU and APAC','Go-to person for escalations'],['MPLS','IPSec VPN','Cisco ASA','BGP','WAN/LAN','NOC'],'A branch loses its link over the carrier network during business hours.','Deep network fundamentals and calm under pressure.'],
    ['2020–2021','Web Hosting Support','International customers',['Hosting, DNS, email and server support','Customers across many time zones','Clear written answers'],['DNS','Email','Linux hosting','cPanel-style panels'],'A website goes down right after a DNS change.','How the internet side really works, and writing fixes people can follow.'],
    ['2022–2023','IT Administrator','Dubai · 3-person IT team · 3,000+ staff',['Set up IT from the ground up across 4 floors and 32 offices','Network, systems and user support for 3,000+ employees','One of a 3-person IT team'],['Windows Server','Networking','Structured cabling','M365','Assets'],'A new floor of 8 offices needs network, Wi-Fi and desks ready before move-in day.','Building at scale from an empty floor, with a very small team.'],
    ['2023–now','IT Operations Executive','Sole in-house IT · 250+ users · 7 offices',['Every IT layer, alone','Headquarters build and relocation with zero downtime','Remote support across several countries'],['Fortinet','UniFi','VoIP / SIP','CCTV','AD / GPO'],'Calls to one country start failing right after a platform release.','Everything above, combined into one role.']];
@@ -1076,7 +1117,7 @@ var R={
   el.innerHTML='<div class="snapbar" id="sb">'+J.map(function(j,i){return '<button class="sbn'+(i===cur?' on':'')+'" data-i="'+i+'"><b>'+j[0]+'</b><span>'+j[1]+'</span></button>'}).join('')+'</div><div id="sv"></div>';
   function draw(){var j=J[cur];el.querySelectorAll('.sbn').forEach(function(b,i){b.classList.toggle('on',i===cur)});
    var bld=cur===3?'<div class="bld">'+[4,3,2,1].map(function(f){return '<div class="fl2"><span>F'+f+'</span>'+[1,2,3,4,5,6,7,8].map(function(o){return '<i style="animation-delay:'+((4-f)*8+o)*0.04+'s"></i>'}).join('')+'</div>'}).join('')+'<div class="bcap">4 floors × 8 offices · 3,000+ users · built from the ground up</div></div>':'';
-   $('#sv',el).innerHTML=bld+'<div class="snapc"><div><div class="lbl" style="font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc)">'+j[0]+'</div><h4 style="font-size:19px;margin:4px 0 2px">'+j[1]+'</h4><div class="mut" style="font-size:14.5px;margin-bottom:10px">'+j[2]+'</div><ul class="snl">'+j[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="tagl">'+j[4].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</div></div><div class="cfx"><div><span class="cl c2">Example ticket</span>'+j[5]+'</div><div><span class="cl c3">What it gave me</span>'+j[6]+'</div></div></div>'}
+   $('#sv',el).innerHTML=bld+'<div class="snapc"><div><div class="lbl" style="font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc)">'+j[0]+'</div><h4 style="font-size:19px;margin:4px 0 2px">'+j[1]+'</h4><div class="mut" style="font-size:14.5px;margin-bottom:10px">'+j[2]+'</div><ul class="snl">'+j[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="tagl">'+j[4].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</div></div><div class="cfx"><div><span class="cl c2">Example ticket</span>'+j[5]+'</div><div><span class="cl c3">What it gave me</span>'+j[6]+'</div></div></div>'+(cur===1?'<div id="cv2" style="margin-top:16px"></div>':'');if(cur===1)R.carrier($('#cv2',el))}
   $('#sb',el).onclick=function(e){var b=e.target.closest('.sbn');if(b){cur=+b.dataset.i;draw()}};draw()},
  remote:function(el){
   var S=[['United Kingdom','Europe/London',-0.1,51.5],['Germany','Europe/Berlin',13.4,52.5],['Italy','Europe/Rome',9.2,45.5],['Hungary','Europe/Budapest',19.0,47.5],['Israel','Asia/Jerusalem',34.8,32.1],['Hong Kong','Asia/Hong_Kong',114.2,22.3],['Taiwan','Asia/Taipei',121.5,25.0]];
